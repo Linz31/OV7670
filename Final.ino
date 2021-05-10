@@ -1,3 +1,8 @@
+/* Reference:1.	https://blog.csdn.net/HouQi02/article/details/51712994
+2.	https://zhuanlan.zhihu.com/p/65250414
+3.	https://www.arducam.com/wp-content/uploads/2019/11/Arducam_ov7670_cmos_camera_module_revc_ds.pdf
+4.	https://www.instructables.com/OV7670-Arduino-Camera-Sensor-Module-Framecapture-T/
+*/
 #include <Wire.h> 
 #define OV7670_ADDRESS    0x21
 #define VSYNC      2
