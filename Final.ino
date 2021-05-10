@@ -37,7 +37,6 @@ uint16_t Vsync_Flag,i,j;
 unsigned char t1,t2;
 
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(256000);
   Wire.begin(); 
   
@@ -59,7 +58,7 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+
 
 }
 
