@@ -2,6 +2,7 @@
 2.  https://zhuanlan.zhihu.com/p/65250414
 3.  https://www.arducam.com/wp-content/uploads/2019/11/Arducam_ov7670_cmos_camera_module_revc_ds.pdf
 4.  https://www.instructables.com/OV7670-Arduino-Camera-Sensor-Module-Framecapture-T/
+5.  https://circuitdigest.com/microcontroller-projects/how-to-use-ov7670-camera-module-with-arduino
 */
 #include <stdint.h>
 #include <avr/io.h>
