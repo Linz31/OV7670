@@ -1,8 +1,13 @@
-/* Reference:1.	https://blog.csdn.net/HouQi02/article/details/51712994
-2.	https://zhuanlan.zhihu.com/p/65250414
-3.	https://www.arducam.com/wp-content/uploads/2019/11/Arducam_ov7670_cmos_camera_module_revc_ds.pdf
-4.	https://www.instructables.com/OV7670-Arduino-Camera-Sensor-Module-Framecapture-T/
+/* Reference:1.  https://blog.csdn.net/HouQi02/article/details/51712994
+2.  https://zhuanlan.zhihu.com/p/65250414
+3.  https://www.arducam.com/wp-content/uploads/2019/11/Arducam_ov7670_cmos_camera_module_revc_ds.pdf
+4.  https://www.instructables.com/OV7670-Arduino-Camera-Sensor-Module-Framecapture-T/
 */
+#include <stdint.h>
+#include <avr/io.h>
+#include <util/twi.h>
+#include <util/delay.h>
+#include <avr/pgmspace.h>
 #include <Wire.h> 
 #define OV7670_ADDRESS    0x21
 #define VSYNC      2
@@ -30,15 +35,14 @@ void set_Cmos7670reg(void);
 unsigned char ov7670_data(void);
 void IO_Init(void);
 
-
-/****variable********/
 unsigned char tmp;
 uint16_t Vsync_Flag,i,j;
 unsigned char t1,t2;
 
 void setup() {
+  // put your setup code here, to run once:
   Serial.begin(256000);
-  Wire.begin(); 
+  Wire.begin();
   
   IO_Init();
   
@@ -46,7 +50,7 @@ void setup() {
   delay(20);
   digitalWrite(RESET, HIGH);
   while(1!=Cmos7670_init());   
-  tmp = rdCmos7670Reg(0x3A)；
+  tmp = rdCmos7670Reg(0x3A);
   if(tmp == 0x04)
   {
     }
@@ -58,7 +62,7 @@ void setup() {
 }
 
 void loop() {
-
+  
 
 }
 
@@ -90,7 +94,7 @@ unsigned char WrCmos7670(unsigned char regID, unsigned char regDat)
   Wire.write(regID);
   Wire.write(regDat);
   Wire.endTransmission(); 
-  return(1)；
+  return(1);
 }   
 
 unsigned char rdCmos7670Reg(unsigned char regID)
@@ -134,8 +138,8 @@ void set_Cmos7670reg(void)
   WrCmos7670(0x0c, 0x00);
   WrCmos7670(0x3e, 0x00);
   WrCmos7670(0x70, 0x3a);
-  WrCmos7670(0x71, 0x35); 
-  WrCmos7670(0x72, 0x11)；
+  WrCmos7670(0x71, 0x35);  
+  WrCmos7670(0x72, 0x11);
   WrCmos7670(0x73, 0x00);
   WrCmos7670(0xa2, 0x02);
   WrCmos7670(0x11, 0x81);
@@ -323,7 +327,6 @@ void OV7670(void)
     detachInterrupt(digitalPinToInterrupt(VSYNC));
     //EXTI->EMR&=~(1<<4);
 
-    //GPIOA->ODR ^= (1 << 3);
 
     digitalWrite(FIFO_RRST, LOW);
     digitalWrite(FIFO_RCK, LOW);             
